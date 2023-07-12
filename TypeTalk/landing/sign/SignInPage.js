@@ -11,6 +11,9 @@ export default ({ navigation }) => {
         onClickSignIn,
         onClickSignUp
     } = useLanding();
+    const moveMain =() =>{
+        navigation.navigate('MainPage')
+    }
     return (
         <>
             <View
@@ -47,7 +50,7 @@ export default ({ navigation }) => {
                         backgroundColor:"grey",
                         marginTop:30
                     }}
-                    onPress ={()=>{onClickSignIn(idText,pwText)}}
+                    onPress ={()=>{onClickSignIn(idText,pwText) ,moveMain()}}
                 >
                     <Text>login</Text>
                 </TouchableOpacity>

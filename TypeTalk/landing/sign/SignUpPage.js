@@ -83,6 +83,11 @@ export default ({ navigation }) => {
                         }}><Text>검사하기</Text></TouchableOpacity>
                     </View>
                 </View>
+                <TouchableOpacity 
+                    onPress={() =>
+                        navigation.navigate('SignIn')}>
+                    <Text>완료</Text>
+                </TouchableOpacity>
 
             </View>
         </>
