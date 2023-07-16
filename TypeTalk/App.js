@@ -3,11 +3,15 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React, {  } from "react";
 import { SafeAreaView, StyleSheet } from "react-native";
 import Landing from "./landing/Landing";
-import SignInPage from "./landing/sign/SignInPage";
-import SignUpPage from "./landing/sign/SignUpPage";
-import MainPage from "./landing/mainpage/MainPage";
+import SignInPage from "./landing/login/SignInPage";
+import SignUpPage from "./landing/login/SignUpPage";
+import TabNavi from "./landing/clientpage/tabbar/TabNavi";
+import UserFix from "./landing/clientpage/page/userdetail/UserFix";
 
+/*
+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
 
+*/
 export default function App() {
   
   const Stack = createNativeStackNavigator();
@@ -26,7 +30,8 @@ export default function App() {
             />
           <Stack.Screen name="SignIn" component={SignInPage} />
           <Stack.Screen name="SignUp" component={SignUpPage} />
-          <Stack.Screen name="MainPage" component={MainPage} />
+          <Stack.Screen name="Client" component={TabNavi} />
+          <Stack.Screen name="UserFix" component={UserFix} />
           </Stack.Navigator>
         </NavigationContainer>
       </SafeAreaView>
