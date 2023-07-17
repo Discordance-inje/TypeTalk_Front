@@ -1,4 +1,5 @@
 import React from "react";
+import { StyleSheet, Text, TextInput, View } from "react-native";
 export const useLanding= () => {
     const onClickSignIn = (id,pw) => {
         /*
@@ -36,8 +37,31 @@ export const useLanding= () => {
 
     }
 
+    const InputType = ({title, text,setText}) => {
+        return (
+                <View
+                        style={{flexDirection: "row", marginTop: 20, alignItems:"center"}}>
+                        <Text style={{width:Platform.OS === "android"? 60:57}}>{title} :</Text>
+                        <TextInput
+                         style={styles.textInputSt}
+                         value={text}
+                         onChangeText={(text)=>{setText(text)}}
+                         />
+                    </View>
+        )
+    }
     return{
         onClickSignIn,
-        onClickSignUp
+        onClickSignUp,
+        InputType
     }
 }
+const styles = StyleSheet.create({
+    textInputSt: {
+        width: "65%",
+        height: Platform.OS === "android"? 40:30,
+        borderBottomWidth: 1,
+        marginLeft: 20,
+        
+    }
+})

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Button, Platform, Pressable, StyleSheet, Text, TouchableOpacity, View } from "react-native"
-import { useLanding } from "./use-landing";
 /**
  * Platform.OS === "android" ? a:b 
  * os 확인
@@ -9,6 +8,7 @@ export default ({
     navigation
 }) => {
     const [isUser, setIsUser] = useState(false);
+    
     return (
         <View
             style={{
