@@ -7,6 +7,7 @@ import SignInPage from "./landing/login/SignInPage";
 import SignUpPage from "./landing/login/SignUpPage";
 import TabNavi from "./landing/clientpage/tabbar/TabNavi";
 import UserFix from "./landing/clientpage/page/userdetail/UserFix";
+import AccountManage from "./landing/clientpage/page/userdetail/AccountManage";
 
 /*
 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
@@ -32,6 +33,7 @@ export default function App() {
           <Stack.Screen name="SignUp" component={SignUpPage} />
           <Stack.Screen name="Client" component={TabNavi} />
           <Stack.Screen name="UserFix" component={UserFix} />
+          <Stack.Screen name="Account" component={AccountManage} />
           </Stack.Navigator>
         </NavigationContainer>
       </SafeAreaView>
@@ -42,6 +44,11 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    
+    backgroundColor:"white"
   }
 })
+
+
+
+
+

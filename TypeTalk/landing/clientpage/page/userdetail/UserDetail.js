@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Image, Pressable, StyleSheet, Text, View } from "react-native"
 import { client } from "../../../../server/client"
-import Icon from "react-native-vector-icons"
+import Icon from 'react-native-vector-icons/AntDesign';
+
 const {userData} = client(); 
 
 export default ({navigation}) => {
@@ -13,11 +14,11 @@ export default ({navigation}) => {
         
         <View 
         style={{ flex: 1, alignItems:"center" }}>
-            <Pressable style={{width:"100%", alignItems:"flex-end", paddingTop:10, paddingRight:10}}
+            <Pressable style={{width:"100%", alignItems:"flex-end", paddingTop:10, paddingRight:20}}
                 onPress={()=>{navigation.navigate('UserFix')}}
-            ><Text>수정버튼</Text></Pressable>
+            ><Icon name="setting" size ={25}/></Pressable>
             <UserImage userUri={userData.image}/>
-            <UserInfo title ={"이름"} text = {userData.name}/>
+            <UserInfo title ={"이름"} text = {userData.name} fix={false}/>
             <UserInfo title ={"나이"} text = {userData.age}/>
             <UserInfo title ={"MBTI"} text = {userData.mbti}/>
             <UserMessage text = {userData.message}/>
@@ -30,19 +31,37 @@ const UserImage = ({userUri}) => {
     return(
         <View>
         <Image
-        style={{backgroundColor:"gray",width:250,height:250,borderRadius:30,marginVertical:30,
+        style={{backgroundColor:"gray",width:250,height:250,borderRadius:30,marginVertical:5,
         borderWidth:1
     }}
          source={{uri:userUri}}></Image>
         </View>
     )
 }
-const UserInfo = ({title,text}) => {
+const UserInfo = ({title,text,fix}) => {
+    const [visible,setVisible] = useState(false)
+    useEffect(()=>{
+        fix?setVisible(true):null
+    },[])
     return(
         <View 
         style ={styles.info}>
-        <Text style={{marginRight:30}}>{title}</Text>
-        <Text>{text}</Text>
+        <Text style={{width:"20%"}}>{title}</Text>
+        <Text style={{
+            paddingLeft:5, 
+            width:"50%",
+            borderWidth:fix?1:0,
+            backgroundColor:fix?"lightgrey":null
+        }}>{text}</Text>
+        
+        {
+            
+            visible?<Pressable 
+            style={{marginLeft:20}}
+            
+            ><Icon name="edit" size={18}  /></Pressable>:null
+        }
+        
     </View>
     )
     
@@ -58,7 +77,7 @@ const UserMessage = ({text}) =>{
 }
 const styles = StyleSheet.create({
     info:{
-        flex:0.15,
+        flex:0.13,
         flexDirection:"row",
         alignContent:"center",
         alignItems:"center",
@@ -67,11 +86,16 @@ const styles = StyleSheet.create({
         width:"80%"
     },
     messageBox:{
-        flex:0.55,
+        flex:0.15,
+        marginTop:10,
         borderWidth:1,
         backgroundColor:"lightgrey",
         borderRadius:20,
         width:"80%",
         padding:10,
+        marginBottom:40
+        
     }
 })
+
+export {styles,UserInfo,UserImage,UserMessage}

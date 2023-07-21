@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native"
 import ProfileImage from "./ProfileImage";
 import { useLanding } from "../use-landing";
+
 const left = 10;
 const {
     InputType,
