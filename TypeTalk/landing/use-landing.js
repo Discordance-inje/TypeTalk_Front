@@ -2,10 +2,12 @@ import { DarkTheme } from "@react-navigation/native";
 import React, { useState } from "react";
 import { StyleSheet, Text, TextInput, TouchableOpacity, View, DimensionValue, Dimensions } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
+import Icon from "react-native-vector-icons/AntDesign"
 export const useLanding = () => {
     const left = 10;
     const displayHeight = Dimensions.get('window').height;
     const displayWidth = Dimensions.get('window').width;
+    
     const onClickSignIn = (id, pw) => {
         /*
             true 면 메인으로 이동
@@ -130,13 +132,19 @@ export const useLanding = () => {
         </View>
         )
     }
-
+    const CustomIcon = ({name, size, color}) => {
+        return(
+            <Icon name={name} size ={size} color={color}/>
+        )
+    }
     return {
         onClickSignIn,
         onClickSignUp,
         InputType,
         Mbti,
-        Birth
+        Birth,
+        CustomIcon,
+      
     }
 
 
