@@ -30,7 +30,7 @@ export default ({ navigation }) => {
                         <ProfileImage></ProfileImage>
 
                         <InputType title="이름" text={name} setText={setName} />
-                        <Birth text={birth} setText={setBirth}/>
+                        {/*<Birth text={birth} setText={setBirth}/>*/}
                         <InputType title="닉네임" text={nickName} setText={setNickName} />
 
 
@@ -49,6 +49,26 @@ export default ({ navigation }) => {
 const LogInfo = ({ page, setPage }) => {
     const [idText, setIdText] = useState('')
     const [pwText, setPwText] = useState('')
+    const [mail,setMail] = useState('')
+    const [visible,setVisible] = useState(true)
+    const MailView = () => {
+        return(
+            <>
+                <InputType title="메일 입력해주세요" text={mail} setText={setMail} />
+                <Button title="확인" onPress={() => { setVisible(!visible) }} />
+            </>
+        )
+    }
+    const IdPwView = () =>{
+        return(
+            <>
+                <InputType title="아이디" text={idText} setText={setIdText} />
+            <InputType title="비밀번호" text={pwText} setText={setPwText(!visible)} />
+            <Button title="확인" onPress={() => { setPage(!page) }} />
+            </>
+            
+        )
+    }
     return (
         <View
             style={{
@@ -57,9 +77,11 @@ const LogInfo = ({ page, setPage }) => {
                 paddingLeft: left,
                 alignItems: "center"
             }}>
-            <InputType title="아이디" text={idText} setText={setIdText} />
-            <InputType title="비밀번호" text={pwText} setText={setPwText} />
-            <Button title="확인" onPress={() => { setPage(!page) }} />
+            {
+                visible?<MailView/>:<IdPwView/>
+            }
+            
+            
         </View>
     )
 }
