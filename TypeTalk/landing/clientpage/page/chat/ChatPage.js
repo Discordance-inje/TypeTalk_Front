@@ -4,7 +4,7 @@ import Icon from "react-native-vector-icons/Ionicons"
 import { client } from "../../../../server/client"
 import { useChat } from "../../../hooks/useChat";
 
-export default ({navigation}) => {
+export default ({navigation:{navigate}}) => {
     const { testUser } = client();
     const UserChatProfile = ({ name, image,lastChat }) => {
         const { onPressSelectedList } = useChat();
@@ -17,7 +17,7 @@ export default ({navigation}) => {
                     width: "100%",
                     
                 }}
-                onPress={()=>{navigation.navigate('ChatRoom'),onPressSelectedList() }}>
+                onPress={()=>{navigate('ChatRoom',{name:name}),onPressSelectedList({name}) }}>
                 <View style={{ width: "20%",}}>
                     {/* user image area*/}
                     <Image

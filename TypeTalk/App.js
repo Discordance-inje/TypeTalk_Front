@@ -10,16 +10,16 @@ import UserFix from "./landing/clientpage/page/userdetail/UserFix";
 import AccountManage from "./landing/clientpage/page/userdetail/AccountManage";
 import ChatRoom from "./landing/clientpage/page/chat/ChatRoom";
 
-/*
-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
 
-*/
+
+
 export default function App() {
   
   const Stack = createNativeStackNavigator();
   return (
     
     <>
+  
       <SafeAreaView style={styles.container}>
         <NavigationContainer>
           <Stack.Navigator
@@ -31,7 +31,7 @@ export default function App() {
               
             />
             {/* sign */}
-          <Stack.Screen name="SignIn" component={SignInPage} />
+          <Stack.Screen name="SignIn" component={SignInPage}/>
           <Stack.Screen name="SignUp" component={SignUpPage} />
           <Stack.Screen name="Client" component={TabNavi} />
           {/* userDetail */}
@@ -42,7 +42,6 @@ export default function App() {
           </Stack.Navigator>
         </NavigationContainer>
       </SafeAreaView>
-
     </>
   )
 }
