@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react"
 import { FlatList, Pressable, Text, TextInput, View } from "react-native"
 import {getUniqueId } from "react-native-device-info"
+import { useSelector } from "react-redux"
 import { useChat } from "../../../hooks/useChat.js"
 import { Example } from "./Example.js"
 
-export default ({ navigation: { navigate },route}) => {
+export default ({ navigation}) => {
     
-    const [title,setTitle] = useState(user)
+    const title = useSelector((state)=> state.user.state)
     const [text,setText] = useState('')
     const {
         userList,
@@ -17,13 +18,20 @@ export default ({ navigation: { navigate },route}) => {
         {user:"",
         text:""}
     ]
-    useEffect(()=>{
-        setTitle(user)
-        console.log(navigate.name)
-    },[])
+    const test= () =>{
+        console.log('---')
+        console.log(title)
+    
+    }
+    
     return (
         <View style={{flex:1,width:"100%"}}>
-            <View style={{flex:0.1,width:"100%",borderWidth:1}}><Text>{route.params.name}</Text></View>
+            <View style={{flex:0.1,width:"100%",borderWidth:1}}>
+                <Pressable onPress={()=>{navigation.pop()}}>
+                <Text>{title}</Text>
+                </Pressable>
+                </View>
+            
             <Example/>
             {/*<FlatList style={{flex:0.8}}/>
             <View style={{flex:0.1,flexDirection:"row", borderWidth:1,width:"100%"} }>
@@ -39,6 +47,9 @@ export default ({ navigation: { navigate },route}) => {
                     <Text>전송</Text>
                 </Pressable>
     </View>*/}
+    <Pressable onPress={()=>{test()}}>
+                    <Text>adas</Text>
+                </Pressable>
         </View>
     )
 }
