@@ -2,13 +2,13 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React, {  } from "react";
 import { SafeAreaView, StyleSheet } from "react-native";
-import Landing from "./landing/Landing";
-import SignInPage from "./landing/login/SignInPage";
-import SignUpPage from "./landing/login/SignUpPage";
-import TabNavi from "./landing/clientpage/tabbar/TabNavi";
-import UserFix from "./landing/clientpage/page/userdetail/UserFix";
-import AccountManage from "./landing/clientpage/page/userdetail/AccountManage";
-import ChatRoom from "./landing/clientpage/page/chat/ChatRoom";
+import Landing from "./src/landing/Landing";
+import SignInPage from "./src/landing/login/SignInPage";
+import SignUpPage from "./src/landing/login/SignUpPage";
+import TabNavi from "./src/landing/clientpage/tabbar/TabNavi";
+import UserFix from "./src/landing/clientpage/page/userdetail/UserFix";
+import AccountManage from "./src/landing/clientpage/page/userdetail/AccountManage";
+import ChatRoom from "./src/landing/clientpage/page/chat/ChatRoom";
 
 
 

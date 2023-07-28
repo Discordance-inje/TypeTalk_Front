@@ -23,7 +23,7 @@ export default () => {
         <CustomIcon name={"meh"} size={15} color={"black"} />
         )}}/>
 
-      <Tab.Screen name="Chat" component={ChatPage}
+      <Tab.Screen name="Chat" component={ChatPage} 
         options={{ tabBarIcon: () => (
         <CustomIcon name={"message1"} size={15} color={"black"} />
         )}}/>
