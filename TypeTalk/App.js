@@ -11,6 +11,7 @@ import AccountManage from "./src/landing/clientpage/page/userdetail/AccountManag
 import ChatRoom from "./src/landing/clientpage/page/chat/ChatRoom";
 import { Provider } from "react-redux";
 import store from "./src/redux/store/store";
+import MatchingUser from "./src/landing/clientpage/page/match/component/MatchingUser";
 
 
 
@@ -42,6 +43,9 @@ export default function App() {
           <Stack.Screen name="Account" component={AccountManage} />
           {/* chat */}
           <Stack.Screen name="ChatRoom" component={ChatRoom} />
+          {/* match */}
+          <Stack.Screen name="Matching" component={MatchingUser} />
+          
           </Stack.Navigator>
         </NavigationContainer>
         </Provider>

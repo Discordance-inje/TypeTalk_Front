@@ -6,7 +6,7 @@ import { useChat } from "../../../hooks/useChat";
 
 export default ({navigation:{navigate}}) => {
     const { testUser } = client();
-    const UserChatProfile = ({ name, image,lastChat }) => {
+    const UserChatProfile = ({ id,name, image,lastChat }) => {
         const { onPressSelectedList } = useChat();
         return (
             <Pressable
@@ -17,7 +17,7 @@ export default ({navigation:{navigate}}) => {
                     width: "100%",
                     
                 }}
-                onPress={()=>{navigate('ChatRoom'),onPressSelectedList({name}) }}>
+                onPress={()=>{navigate('ChatRoom'),onPressSelectedList({name,id}) }}>
                 <View style={{ width: "20%",}}>
                     {/* user image area*/}
                     <Image
@@ -52,7 +52,7 @@ export default ({navigation:{navigate}}) => {
                 style={{ flex: 1, borderWidth: 1, padding: 20 }}
                 data={testUser}
 
-                renderItem={({ item }) => <UserChatProfile name={item.name} image={item.image} />}
+                renderItem={({ item }) => <UserChatProfile id = {item.id}name={item.name} image={item.image} />}
                 keyExtractor={item => item.id}
 
             />

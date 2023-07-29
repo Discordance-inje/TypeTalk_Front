@@ -14,16 +14,6 @@ export default ({ navigation}) => {
         onPressSubmit,
         user
     } = useChat()
-    const inputData =[
-        {user:"",
-        text:""}
-    ]
-    const test= () =>{
-        console.log('---')
-        console.log(title)
-    
-    }
-    
     return (
         <View style={{flex:1,width:"100%"}}>
             <View style={{flex:0.1,width:"100%",borderWidth:1}}>
