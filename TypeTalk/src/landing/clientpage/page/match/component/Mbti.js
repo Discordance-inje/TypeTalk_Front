@@ -1,7 +1,11 @@
+import { useState } from "react"
 import { Pressable, Text, View,Dimensions } from "react-native"
+import { useMatch } from "../../../../hooks/useMatch"
 
-export default ({mbti,id}) =>{
-    const height = Dimensions.get("screen").height
+export default ({mbti,id,bgColor,onPressMbti}) =>{
+
+   
+    
     return(
         <Pressable style={{
             borderWidth:1,
@@ -13,7 +17,11 @@ export default ({mbti,id}) =>{
             borderRadius:10,
             marginRight:id%4===0?0:5,
             marginBottom:5,
+            backgroundColor:bgColor
+            
         }}
+        
+        onPress={()=>{ onPressMbti(id)}}
         >
             <View style={{height:"70%",width:"100%",alignItems:"center"}}>
                 <Text>IMG</Text>

@@ -1,14 +1,20 @@
-import { GET_LAST_MESSAGE,SUBMIT_MESSAGE } from "../action/manageChat"
+import { GET_LAST_MESSAGE,LOAD_CHAT,SUBMIT_MESSAGE } from "../action/manageChat"
 
 export const initialState =
     [
         {
-            userId: "",
-            messege: [
-                {
-                    user: "",
-                    text: ""
-                },
+            userId:'',
+            users:{
+                email:'',
+                name:'',
+                userId:''       
+            },
+            messeges: [
+              {
+                createdAt: new Date(),
+                text:"",
+                name:"",
+              }
             ]
         },
     ]
@@ -22,6 +28,12 @@ export const chatReducer = (state =initialState,action) => {
         case GET_LAST_MESSAGE:
             return{
 
+            }
+        case LOAD_CHAT:
+            //userId UserId가져와서 해당 유저와의 데이터 전달
+            const findUser = state.find(item => item.userId === action.id);
+            return{
+                findUser
             }
        
     }

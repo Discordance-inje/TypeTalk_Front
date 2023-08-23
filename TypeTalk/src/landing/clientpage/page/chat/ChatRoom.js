@@ -3,11 +3,13 @@ import { FlatList, Pressable, Text, TextInput, View } from "react-native"
 import {getUniqueId } from "react-native-device-info"
 import { useSelector } from "react-redux"
 import { useChat } from "../../../hooks/useChat.js"
+import Chatting from "./component/Chatting.js"
 import { Example } from "./Example.js"
 
 export default ({ navigation}) => {
     
-    const title = useSelector((state)=> state.user.state)
+    
+    const talkingPartner = useSelector((state)=> state.list.arr)
     const [text,setText] = useState('')
     const {
         userList,
@@ -18,28 +20,16 @@ export default ({ navigation}) => {
         <View style={{flex:1,width:"100%"}}>
             <View style={{flex:0.1,width:"100%",borderWidth:1}}>
                 <Pressable onPress={()=>{navigation.pop()}}>
-                <Text>{title}</Text>
+                <Text style={{fontSize:24,
+                    fontWeight:"bold",
+                    marginLeft:10,marginTop:10}}>{talkingPartner[0].name}</Text>
                 </Pressable>
                 </View>
             
-            <Example/>
-            {/*<FlatList style={{flex:0.8}}/>
-            <View style={{flex:0.1,flexDirection:"row", borderWidth:1,width:"100%"} }>
-                <TextInput
-                    placeholder="메세지를 입력해주세요"
-                    value={text}
-                    onChangeText={()=>{setText(text)}}
-                    style={{width:"80%",borderWidth:1,padding:10}}
-                />
-                <Pressable style={{width:"20%",borderWidth:1,justifyContent:"center",alignItems:"center"}}
-                    onPress={()=>{onPressSubmit()}}
-                >
-                    <Text>전송</Text>
-                </Pressable>
-    </View>*/}
-    <Pressable onPress={()=>{test()}}>
-                    <Text>adas</Text>
-                </Pressable>
+            <Example DATA={talkingPartner}/>
+            
+            
+   
         </View>
     )
 }

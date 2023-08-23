@@ -1,11 +1,14 @@
 
 import { FlatList, Image, Pressable, ScrollView, StyleSheet, Text, View } from "react-native"
 import Icon from "react-native-vector-icons/Ionicons"
+import { useSelector } from "react-redux";
 import { client } from "../../../../server/client"
 import { useChat } from "../../../hooks/useChat";
 
 export default ({navigation:{navigate}}) => {
-    const { testUser } = client();
+    const  testUser  = useSelector((state)=>state.list.state)
+    //대화중인 상대만 뽑아 오도록 액션 추가 필요
+    console.log(testUser)
     const UserChatProfile = ({ id,name, image,lastChat }) => {
         const { onPressSelectedList } = useChat();
         return (
@@ -17,7 +20,7 @@ export default ({navigation:{navigate}}) => {
                     width: "100%",
                     
                 }}
-                onPress={()=>{navigate('ChatRoom'),onPressSelectedList({name,id}) }}>
+                onPress={()=>{navigate('ChatRoom'),onPressSelectedList(id) }}>
                 <View style={{ width: "20%",}}>
                     {/* user image area*/}
                     <Image

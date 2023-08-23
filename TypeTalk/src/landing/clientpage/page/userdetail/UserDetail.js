@@ -2,26 +2,32 @@ import { useEffect, useState } from "react";
 import { Image, Pressable, StyleSheet, Text, View } from "react-native"
 import { client } from "../../../../server/client"
 import Icon from 'react-native-vector-icons/AntDesign';
+import { useSelector } from "react-redux";
 
-const {userData} = client(); 
+
 
 export default ({navigation}) => {
+    const userData = useSelector((state)=>state.list.arr);
+
     useEffect(()=>{
-        console.log(userData.image)
+        console.log(userData)
     },[])
     
     return (
         
         <View 
         style={{ flex: 1, alignItems:"center" }}>
-            <Pressable style={{width:"100%", alignItems:"flex-end", paddingTop:10, paddingRight:20}}
+            <Pressable style={{width:"100%",
+             alignItems:"flex-end",
+              paddingTop:10,
+              paddingRight:20}}
                 onPress={()=>{navigation.navigate('UserFix')}}
             ><Icon name="setting" size ={25}/></Pressable>
-            <UserImage userUri={userData.image}/>
-            <UserInfo title ={"이름"} text = {userData.name} fix={false}/>
+            <UserImage userUri={userData[0].image}/>
+            <UserInfo title ={"이름"} text = {userData[0].name} fix={false}/>
             {/*<UserInfo title ={"나이"} text = {userData.age}/>*/}
-            <UserInfo title ={"MBTI"} text = {userData.mbti}/>
-            <UserMessage text = {userData.message}/>
+            <UserInfo title ={"MBTI"} text = {userData[0].mbti}/>
+            <UserMessage text = {userData[0].message}/>
         </View>
     )
    
@@ -38,6 +44,7 @@ const UserImage = ({userUri}) => {
         </View>
     )
 }
+
 const UserInfo = ({title,text,fix}) => {
     const [visible,setVisible] = useState(false)
     useEffect(()=>{

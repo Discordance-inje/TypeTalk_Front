@@ -1,11 +1,14 @@
 import { Button, Pressable, Text, View } from "react-native"
+import { useSelector } from "react-redux";
 import { client } from "../../../../server/client";
 import { useLanding } from "../../../use-landing";
 import UserDetail, { UserInfo,UserMessage,UserImage } from "./UserDetail"
 import { styles } from "./UserDetail"
 const {CustomIcon} = useLanding();
-const {userData} = client(); 
+
+
 export default ({navigation}) => {
+    const userData = useSelector((state)=>state.list.arr);
     return(
         <View
         style={{ flex: 1, alignItems:"center" }}>
@@ -25,12 +28,12 @@ export default ({navigation}) => {
             </Pressable>
             </View>
             
-            <UserImage userUri={userData.image}/>
+            <UserImage userUri={userData[0].image}/>
             
-            <UserInfo title ={"이름"} text = {userData.name} fix={true}/> 
-            <UserInfo title ={"나이"} text = {userData.age} fix={true}/>
-            <UserInfo title ={"MBTI"} text = {userData.mbti} fix={true}/>
-            <UserMessage text = {userData.message}/>
+            <UserInfo title ={"이름"} text = {userData[0].name} fix={true}/> 
+            <UserInfo title ={"나이"} text = {userData[0].age} fix={true}/>
+            <UserInfo title ={"MBTI"} text = {userData[0].mbti} fix={true}/>
+            <UserMessage text = {userData[0].message}/>
             <Pressable
                 style={{
                   borderBottomWidth:1

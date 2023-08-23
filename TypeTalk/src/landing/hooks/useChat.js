@@ -1,36 +1,30 @@
 import { useCallback, useState } from "react"
 import { useDispatch } from "react-redux"
-import { setUserId } from "../../redux/action/manageUser"
+import { getUserData, getUserName, } from "../../redux/action/manageUser"
 
 
 
 export const useChat =() =>{
     const dispatch = useDispatch()
     const [user,setUser] =useState('')
+    const [messages,setMessages] = useState([])
     
-    const onPressSelectedList = ({name,id}) => {
-        dispatch(setUserId(name))
-        console.log(name)
-        setUser(name)
+    const onPressSelectedList = (id) => {
+        dispatch(getUserData(id))
+        
+        setUser(id)
     }
-    const userList =
-    [
-        {
-            user:"",
-            message:[
-                {
-                    user:"",
-                    text:"",
-                }
-            ]
-        }
-    ]
+    
     const onPressSubmit =({user,message}) =>{
 
     }
+
+    const loadChat = ( ) => {
+
+    }
+
 return{
     onPressSelectedList,
-    userList,
     onPressSubmit,
     user
 }

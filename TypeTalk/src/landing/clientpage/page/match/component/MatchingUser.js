@@ -2,10 +2,13 @@ import { Image, ImageBackground, Pressable, Text, View } from "react-native"
 import { useSelector } from "react-redux"
 import Icon from 'react-native-vector-icons/AntDesign'
 import { UserImage } from "../../userdetail/UserDetail"
+import { useChat } from "../../../../hooks/useChat"
 export default ({navigation}) => {
-
-    let user = useSelector((state) => state.list.arr)
+ const { onPressSelectedList } = useChat();
+    const user = useSelector((state) => state.list.arr)
+    console.log('test',user)
     const MatButton = ({ text,onPressFx }) => {
+        
         return (
             <Pressable
                 onPress={()=>{onPressFx()}}
@@ -42,7 +45,7 @@ export default ({navigation}) => {
             resizeMode="cover"
             
             aria-hidden={true}
-            source={{ uri: user[0].image }}>
+            source={{ uri: user.image }}>
             <Text
                 style={{
                     paddingLeft: 10,
@@ -53,17 +56,19 @@ export default ({navigation}) => {
                     borderWidth: 0,
                     color: 'white'
                 }}>
-
-                {user[0].name}    {user[0].mbti}
+                
+                {user.name}    {user.mbti}
                 {'\n\n'}
-                {user[0].message}
+                {user.message}
             </Text>
         </ImageBackground>
 
         )
     }
-    const onPressTalk=()=>{
-
+    const onPressChat = ()=> {
+       
+        navigation.navigate('ChatRoom'),
+        onPressSelectedList(user.id)
     }
     const onPressCloseUser=()=>{
         navigation.navigate('Match')
@@ -77,7 +82,7 @@ export default ({navigation}) => {
             </View>
             <View style={{flexDirection: 'row',flex: 0.15,borderWidth: 1}}>
                 {/*버튼 영역 */}
-                <MatButton text={'대화하기'} onPressFx={onPressTalk()}/>
+                <MatButton text={'대화하기'} onPressFx={onPressChat}/>
                 <MatButton 
                 text={'close'} onPressFx={onPressCloseUser}/>
             </View>

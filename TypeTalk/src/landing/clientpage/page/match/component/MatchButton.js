@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Pressable, Text } from "react-native"
 import { useDispatch } from "react-redux"
-import { getUserData } from "../../../../../redux/action/manageUser";
+import { getSelectMbti, getUserData } from "../../../../../redux/action/manageUser";
 
 
-export default ({navigation}) => {
+export default ({navigation,selectedMbti}) => {
     const [ranId,setRanId] =useState(1)
     
     const num = () => {
@@ -16,9 +16,12 @@ export default ({navigation}) => {
     }
     const dispatch =useDispatch();
     const onPressMatchButton =() => {
+        console.log('rrrr',selectedMbti)
+        dispatch(getUserData(selectedMbti))
         
         console.log(num(),"rannum-=--=--=-=-=-=-==")
-        dispatch(getUserData(num()))
+        console.log('eeeee',selectedMbti)
+        
     }
     //랜덤 난수 발생 시키기
     //Math.floor(Math.random()*(max-min)*min)

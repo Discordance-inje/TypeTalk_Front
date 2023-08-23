@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Platform, StyleSheet, Text, TextInput,  TouchableOpacity, View } from "react-native"
+import { useDispatch } from "react-redux";
+import { setLoginUser } from "../../redux/action/manageUser";
 import { useLanding } from "../use-landing";
 
 
@@ -12,6 +14,10 @@ export default ({ navigation }) => {
         onClickSignUp,
         InputType
     } = useLanding();
+
+    const dispatch = useDispatch()
+    
+    const login =(id)=>{ dispatch(setLoginUser(id))}
     return (
         <>
             <View
@@ -32,7 +38,7 @@ export default ({ navigation }) => {
                         backgroundColor:"grey",
                         marginTop:30
                     }}
-                    onPress ={()=>{onClickSignIn(idText,pwText), navigation.navigate('Client') }}
+                    onPress ={()=>{onClickSignIn(idText,pwText), login(idText),navigation.navigate('Client') }}
                 >
                     <Text>login</Text>
                 </TouchableOpacity>

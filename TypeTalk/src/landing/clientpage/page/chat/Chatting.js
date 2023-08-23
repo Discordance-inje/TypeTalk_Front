@@ -1,10 +1,11 @@
 import React, { useState, useCallback, useEffect } from 'react'
 import { GiftedChat } from 'react-native-gifted-chat'
+import { useSelector } from 'react-redux'
 
-export function Example({DATA}) {
-  //대화방 유저의 아이디 가져와서 해당 스태이트 우선 가져오기
-  const [messages,setMessages]= useState([])
-  console.log(DATA)
+export function Chatting() {
+  const [messages, setMessages] = useState([])
+  //let user = useSelector((state) => state.list.arr)
+  
   useEffect(() => {
     setMessages([
       {
@@ -24,7 +25,6 @@ export function Example({DATA}) {
     setMessages(previousMessages =>
       GiftedChat.append(previousMessages, messages),
     )
-    console.log(messages)
   }, [])
 
   return (
@@ -32,9 +32,8 @@ export function Example({DATA}) {
       messages={messages}
       onSend={messages => onSend(messages)}
       placeholder={"메세지를 입력해주세요"}
-      
       user={{
-        _id: 2,
+        _id:1
       }}
     />
   )
