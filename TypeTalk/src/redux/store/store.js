@@ -1,10 +1,12 @@
 import { applyMiddleware, combineReducers, createStore } from "redux";
-import { chatReducer,  userReducer } from "../reducer/chatReducer";
+import { chatReducer } from "../reducer/chatReducer";
 import logger from 'redux-logger'
+import { listReducer, userReducer } from "../reducer/userReducer";
 
 const rootReducer = combineReducers({
     chat: chatReducer,
-    user: userReducer
+    user: userReducer,
+    list:listReducer
 })
 
 const store = createStore(rootReducer,applyMiddleware(logger));

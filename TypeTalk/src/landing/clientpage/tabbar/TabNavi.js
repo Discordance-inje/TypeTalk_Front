@@ -1,9 +1,8 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { useLanding } from '../../use-landing';
 import ChatPage from '../page/chat/ChatPage';
-import MainPage from '../page/MainPage';
-import Test from '../page/Test';
+import MainPage from '../page/main/MainPage';
+import MatchPage from '../page/match/MatchPage';
 import UserDetail from '../page/userdetail/UserDetail';
 
 export default () => {
@@ -18,7 +17,7 @@ export default () => {
         <CustomIcon name={"home"} size={15} color={"black"} />
         )}}/>
 
-      <Tab.Screen name="Test2" component={Test}
+      <Tab.Screen name="Match" component={MatchPage}
         options={{ tabBarIcon: () => (
         <CustomIcon name={"meh"} size={15} color={"black"} />
         )}}/>
