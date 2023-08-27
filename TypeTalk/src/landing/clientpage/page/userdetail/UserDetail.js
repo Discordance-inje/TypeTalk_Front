@@ -19,7 +19,7 @@ export default ({navigation}) => {
             ><Icon name="setting" size ={25}/></Pressable>
             <UserImage userUri={userData.image}/>
             <UserInfo title ={"이름"} text = {userData.name} fix={false}/>
-            <UserInfo title ={"나이"} text = {userData.age}/>
+            {/*<UserInfo title ={"나이"} text = {userData.age}/>*/}
             <UserInfo title ={"MBTI"} text = {userData.mbti}/>
             <UserMessage text = {userData.message}/>
         </View>
