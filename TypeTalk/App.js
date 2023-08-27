@@ -9,6 +9,8 @@ import TabNavi from "./src/landing/clientpage/tabbar/TabNavi";
 import UserFix from "./src/landing/clientpage/page/userdetail/UserFix";
 import AccountManage from "./src/landing/clientpage/page/userdetail/AccountManage";
 import ChatRoom from "./src/landing/clientpage/page/chat/ChatRoom";
+import { Provider } from "react-redux";
+import store from "./src/redux/store/store";
 
 
 
@@ -21,6 +23,7 @@ export default function App() {
     <>
   
       <SafeAreaView style={styles.container}>
+        <Provider store={store}>
         <NavigationContainer>
           <Stack.Navigator
             screenOptions={{headerShown:false}}
@@ -41,6 +44,8 @@ export default function App() {
           <Stack.Screen name="ChatRoom" component={ChatRoom} />
           </Stack.Navigator>
         </NavigationContainer>
+        </Provider>
+        
       </SafeAreaView>
     </>
   )

@@ -17,7 +17,7 @@ export default ({navigation:{navigate}}) => {
                     width: "100%",
                     
                 }}
-                onPress={()=>{navigate('ChatRoom',{name:name}),onPressSelectedList({name}) }}>
+                onPress={()=>{navigate('ChatRoom'),onPressSelectedList({name}) }}>
                 <View style={{ width: "20%",}}>
                     {/* user image area*/}
                     <Image
