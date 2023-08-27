@@ -1,9 +1,10 @@
-import { DarkTheme } from "@react-navigation/native";
+import { DarkTheme, useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { StyleSheet, Text, TextInput, TouchableOpacity, View, DimensionValue, Dimensions } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 import Icon from "react-native-vector-icons/AntDesign"
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { setLoginUser } from "../redux/action/manageUser";
 
 export const useLanding = () => {
@@ -41,38 +42,8 @@ export const useLanding = () => {
             </View>
         )
     }
-    const Mbti = ({ mbti, setMbti }) => {
-        return (
-            <View
-                style={{ flexDirection: "row", marginTop: 20, alignItems: "center" }}>
-                <Text style={{ width: displayWidth / 6.5 }}>mbti :</Text>
-                <View style={{
-                    width: "65%",
-                    flexDirection: "row",
-                    height: Platform.OS === "android" ? 40 : 30,
-                    marginLeft: 20,
-                }}>
-                    <TextInput
-                        style={{
-                            width: 60,
-                            height: Platform.OS === "android" ? 40 : 30,
-                            borderBottomWidth: 1,
-                        }}
-                        value={mbti}
-                        onChangeText={(mbti) => { setMbti(mbti) }}
-                    />
-                    <TouchableOpacity style={{
-                        alignItems: "center",
-                        width: 80,
-                        borderWidth: 1,
-                        justifyContent: "center",
-                        marginLeft: left,
-                        backgroundColor: "grey"
-                    }}><Text>검사하기</Text></TouchableOpacity>
-                </View>
-            </View>
-        )
-    }
+    
+    
     const Birth = ({ text, setText}) => {
         const [open,setOpen]=useState(false)
         const [value, setValue] = useState(null);
@@ -125,7 +96,6 @@ export const useLanding = () => {
         onClickSignIn,
         onClickSignUp,
         InputType,
-        Mbti,
         Birth,
         CustomIcon,
       

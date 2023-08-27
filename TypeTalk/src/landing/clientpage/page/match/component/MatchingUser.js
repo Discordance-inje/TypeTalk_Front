@@ -5,7 +5,7 @@ import { UserImage } from "../../userdetail/UserDetail"
 import { useChat } from "../../../../hooks/useChat"
 export default ({navigation}) => {
  const { onPressSelectedList } = useChat();
-    const user = useSelector((state) => state.list.arr)
+    const user = useSelector((state) => state.list.ranUser)
     console.log('test',user)
     const MatButton = ({ text,onPressFx }) => {
         

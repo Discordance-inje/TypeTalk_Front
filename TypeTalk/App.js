@@ -12,6 +12,7 @@ import ChatRoom from "./src/landing/clientpage/page/chat/ChatRoom";
 import { Provider } from "react-redux";
 import store from "./src/redux/store/store";
 import MatchingUser from "./src/landing/clientpage/page/match/component/MatchingUser";
+import MbtiTest from "./src/landing/clientpage/page/mbtiTest/MbtiTest";
 
 
 
@@ -46,6 +47,7 @@ export default function App() {
           {/* match */}
           <Stack.Screen name="Matching" component={MatchingUser} />
           
+          <Stack.Screen name="Test" component={MbtiTest}/>
           </Stack.Navigator>
         </NavigationContainer>
         </Provider>

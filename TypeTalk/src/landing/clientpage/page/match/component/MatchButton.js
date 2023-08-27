@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Pressable, Text } from "react-native"
 import { useDispatch } from "react-redux"
-import { getSelectMbti, getUserData } from "../../../../../redux/action/manageUser";
+import { getRanUserData, } from "../../../../../redux/action/manageUser";
 
 
 export default ({navigation,selectedMbti}) => {
@@ -17,7 +17,7 @@ export default ({navigation,selectedMbti}) => {
     const dispatch =useDispatch();
     const onPressMatchButton =() => {
         console.log('rrrr',selectedMbti)
-        dispatch(getUserData(selectedMbti))
+        dispatch(getRanUserData(selectedMbti))
         
         console.log(num(),"rannum-=--=--=-=-=-=-==")
         console.log('eeeee',selectedMbti)

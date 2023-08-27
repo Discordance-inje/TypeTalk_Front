@@ -10,11 +10,10 @@ export default ({ navigation}) => {
     
     
     const talkingPartner = useSelector((state)=> state.list.arr)
+    console.log(talkingPartner)
     const [text,setText] = useState('')
     const {
-        userList,
-        onPressSubmit,
-        user
+       
     } = useChat()
     return (
         <View style={{flex:1,width:"100%"}}>

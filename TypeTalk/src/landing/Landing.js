@@ -1,5 +1,8 @@
 import { useState } from "react";
-import { Button, Platform, Pressable, StyleSheet, Text, TouchableOpacity, View } from "react-native"
+import { Button, Image, Platform, Pressable, StyleSheet, Text, TouchableOpacity, View } from "react-native"
+import { useDispatch } from "react-redux";
+import { setLoginUser } from "../redux/action/manageUser";
+
 /**
  * Platform.OS === "android" ? a:b 
  * os 확인
@@ -8,40 +11,56 @@ export default ({
     navigation
 }) => {
     const [isUser, setIsUser] = useState(false);
-    
+    const logoPath = '/Users/kjm/Projects/TypeTalk_Front/TypeTalk/src/image/logo/logo2.PNG'
+    const dispatch = useDispatch()
+    const signUpId = () =>{
+        dispatch(setLoginUser(-1))
+    }
     return (
         <View
             style={{
-                backgroundColor: "#63B28C",
+                backgroundColor:'#0080C8',
                 flex: 1,
+                alignItems:"center"
             }}>
             <View
                 style={{
+                    backgroundColor:'white',
+                    marginTop:50,
                     alignContent: "center",
                     alignItems: "center",
                     justifyContent: "center",
-                    height: "50%"
+                    height: "40%",
+                    width:'75%',
+                    borderRadius:500,
+                    borderWidth:1
                 }}>
-                <Text>logo</Text>
+                <Image source={{uri:logoPath}}
+                    style={{
+                        width:200,
+                        height:200
+                    }}
+                />
             </View>
             <View
                 style={{
                     alignContent: "center",
                     alignItems: "center",
                     justifyContent: "center",
-                    width: "100%"
+                    width: "100%",
+                    marginTop:50
                 }}>
                  <TouchableOpacity
                 style={styles.signBt}
                     onPressIn={() =>
                         navigation.navigate('SignIn')}
-                ><Text style={{color:"white"}}>로그인</Text>
+                ><Text style={{color:"black",fontWeight:"bold",fontSize:16}}>로그인</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                 style={styles.signBt}
-                    onPressIn={() =>
-                        navigation.navigate('SignUp')}
-                ><Text style={{color:"white"}}>회원가입</Text>
+                    onPress={() =>
+                        {navigation.navigate('SignUp'),signUpId()}}
+                ><Text style={{color:"black",fontWeight:"bold",fontSize:16}}>회원가입</Text>
                 </TouchableOpacity>
 
             </View>
@@ -54,7 +73,7 @@ const styles = StyleSheet.create({
         justifyContent:"center",
         alignItems:"center",
         width: "50%",
-        backgroundColor: "#262c2C",
+        backgroundColor: "white",
         borderWidth: 1,
         height:30,
         borderRadius: 8,

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Dimensions, FlatList, Pressable, StyleSheet, Text, View } from "react-native"
+import { Button, Dimensions, FlatList, Image, Pressable, StyleSheet, Text, View } from "react-native"
 import { useMatch } from "../../../hooks/useMatch"
 import MatchButton from "./component/MatchButton";
 import Mbti from "./component/Mbti";
@@ -27,7 +27,7 @@ export default ({ navigation }) => {
            setSelectedMbti(list.find(item=>item.clicked))
         
         }
-        
+        console.log('selectedMbti',selectedMbti)
     }
     return (
         <View style={{ flex: 1 }}>
@@ -60,8 +60,16 @@ export default ({ navigation }) => {
 
                             onPress={() => { handleButtonClick(item.id)}}
                         >
-                            <View style={{ height: "70%", width: "100%", alignItems: "center" }}>
-                                <Text>IMG</Text>
+                            <View style={{ height: "70%", width: "100%", alignItems: "center",justifyContent:"center" }}>
+                                <Image 
+                                    style={{
+        
+                                        width:60,
+                                        height:60,
+                                        
+
+                                    }}
+                                source={{uri:item.image}}/>
                             </View>
                             <View style={{ height: "30%", borderTopWidth: 1, width: "100%", alignItems: "center" }}>
                                 <Text>{item.mbti}</Text>

@@ -10,7 +10,7 @@ export default ({navigation}) => {
     const userData = useSelector((state)=>state.list.arr);
 
     useEffect(()=>{
-        console.log(userData)
+        console.log('userData for detail',userData[0].name)
     },[])
     
     return (

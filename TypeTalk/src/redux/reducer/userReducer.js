@@ -1,8 +1,24 @@
-import { GET_SELECT_MBTI, GET_USER_DATA, SET_LOGIN_USER} from "../action/manageUser"
+import {  GET_RAN_USER_DATA,
+     SET_LOGIN_USER,
+    SET_USER_MBTI,
+    GET_USER_DATA
+} from "../action/manageUser"
 
 
 export const userList =
     [
+        {
+            id: -1,
+            pw: "",
+            name: "",
+            age: 0,
+            sex: "",
+            image: "",
+            mbti: "",
+            message: "",
+            logined:false,
+            
+        },
         {
             id: 1,
             pw: "1234",
@@ -13,25 +29,6 @@ export const userList =
             mbti: "INFP",
             message: "안녕하세요 저는  원숭이입니다.",
             logined:false,
-            chat:[
-                {
-                    id:'',  //대화중인 상대 id
-                    name:'',    //이름
-                    image:'',   //프로필 이미지
-                    createdAt: new Date(),//시간??
-                    _id:1,
-                    conversation:[
-                        //대화로그
-                        //id 1 사용자
-                        //id 2 상대방
-                        {
-                            _id: 2, 
-                            text:''
-                        },
-
-                    ],
-                },
-            ]
             
         },
         {
@@ -62,17 +59,21 @@ export const userList =
 
     ]
 
-
-
 export const listReducer = (state = userList, action)=>{
-    
     switch(action.type){
     case GET_USER_DATA:{
+       
+        const arr = state;
+
+        return{
+            ...arr,
+            arr:userList.filter(item=>item.id==action.id)
+        }
+    }
+    case GET_RAN_USER_DATA:{
         //받아온 id와 같은 유저에 접근해서 해당 유저 데이터 수정하기
         console.log(action)
         console.log(state)
-        
-        
         const arr =state
         const newState = {
             ...arr,
@@ -89,7 +90,7 @@ export const listReducer = (state = userList, action)=>{
         }
         return{
             ...arr,
-            arr:newState.arr[num()-1]
+            ranUser:newState.arr[num()-1]
             
         }
     }
@@ -101,13 +102,26 @@ export const listReducer = (state = userList, action)=>{
             arr:userList.filter((item) => item.id == action.id)
         }
     }
-    case GET_SELECT_MBTI:{
+
+    case SET_USER_MBTI:{
+        console.log('action Set User ', action)
         const arr =state
+        const newState = 
+            userList.filter((item) => item.id == action.id);
+        console.log('newState',newState)
+        const updateUser ={
+            ...newState[0],
+            mbti:action.mbti
+        }
+        userList[action.id-1] = updateUser
+        console.log('userList',userList)
+        console.log('updateUser',updateUser)
         return {
-            ...state,
-            arr:userList.filter((item) => item.id === action.id)
-        };
+            arr:[updateUser],
+            state: userList
+        }
     }
+    
 }
     return {state};
 }
